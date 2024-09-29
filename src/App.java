@@ -42,7 +42,6 @@ public class App {
             String ligne;
             while ((ligne = br.readLine()) != null) {
                 bibliotheque.add(ligne);
-                System.out.println(ligne);
             }
         }catch (Exception e) {
             e.printStackTrace();
@@ -56,15 +55,30 @@ public class App {
         return moString;
     }
 
-
+    public static boolean isExist(){
+        return bibliotheque.contains(readline());
+    }
     public static boolean isExist(String motString){
         return bibliotheque.contains(motString);
     }
+
+    public static void liste(){
+        String mot= readline();
+        ArrayList<String> x =new ArrayList<String>();
+        if (isExist(mot)) {
+            System.out.println("Le mot " + mot + "existe vraiment ! pas de faute");
+        }else{
+            for(int i= 0 ; i<bibliotheque.size(); i++){
+                if (resolveLenveisten(mot, bibliotheque.get(i))==1){
+                    x.add(bibliotheque.get(i));
+                    System.out.println(bibliotheque.get(i));
+                }
+            }
+        }
+    }
     public static void main(String[] args) {
-        // String s1 = "herizo";
-        // String s2 = "hepezo";
-        // System.out.println(resolveLenveisten(s1, s2));
-        // insertToBibliotheaque("src/liste_francais.txt");
-        // System.out.println(readline());
+        insertToBibliotheaque("src/liste_francais.txt");
+        
+        liste();
     }
 }
