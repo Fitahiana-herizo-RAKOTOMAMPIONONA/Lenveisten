@@ -62,8 +62,7 @@ public class App {
         return bibliotheque.contains(motString);
     }
 
-    public static void liste(){
-        String mot= readline();
+    public static void liste(String mot){
         ArrayList<String> x =new ArrayList<String>();
         if (isExist(mot)) {
             System.out.println("Le mot " + mot + "existe vraiment ! pas de faute");
@@ -76,9 +75,21 @@ public class App {
             }
         }
     }
+
+    public static String[] prepareData(String mot){
+        return mot.split(" ");
+    }
+    
+    public static void resolvePhrase(String[] donnes){
+        // int i=0;
+        for(String donne :donnes){
+            liste(donne);
+            // System.out.println(donne + " " + i++);
+        }
+    }
     public static void main(String[] args) {
-        insertToBibliotheaque("src/liste_francais.txt");
-        
-        liste();
+        // insertToBibliotheaque("src/liste_francais.txt");
+        // liste(readline());
+        resolvePhrase(prepareData(readline()));
     }
 }
