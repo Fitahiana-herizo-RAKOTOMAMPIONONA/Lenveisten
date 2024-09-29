@@ -1,5 +1,12 @@
+import java.io.BufferedReader;
+import java.io.Console;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
+
+import javax.print.DocFlavor.STRING;
 
 public class App {
     static ArrayList<String> bibliotheque =new ArrayList<String>();
@@ -20,7 +27,7 @@ public class App {
         return matrice[str.length()][str2.length()];
     }   
 
-    
+
     public static int minimun_edits(int  ...nums){
         return Arrays.stream(nums).min().orElse(Integer.MAX_VALUE);
     }
@@ -29,9 +36,26 @@ public class App {
     public static int test_caractere(char c1 ,char c2){
         return c1 == c2? 0 : 1;
     }
+
+    public static void insertToBibliotheaque(String pathname){
+        File fichier = new File(pathname);
+        try(BufferedReader br = new BufferedReader(new FileReader(fichier))){
+            String ligne;
+            while ((ligne = br.readLine()) != null) {
+                bibliotheque.add(ligne);
+                System.out.println(ligne);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public static void main(String[] args) {
-        String s1 = "herizo";
-        String s2 = "hepezo";
-        System.out.println(resolveLenveisten(s1, s2));
+        // String s1 = "herizo";
+        // String s2 = "hepezo";
+        // System.out.println(resolveLenveisten(s1, s2));
+        // insertToBibliotheaque("src/liste_francais.txt");
+        // System.out.println(readline());
     }
 }
