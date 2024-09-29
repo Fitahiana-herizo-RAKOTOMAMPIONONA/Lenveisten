@@ -50,6 +50,13 @@ public class App {
         }
     }
 
+    static String readline(){
+        Scanner scanner = new Scanner(System.in);
+        String moString = scanner.nextLine();
+        scanner.close();
+        return moString;
+    }
+
 
     public static void main(String[] args) {
         // String s1 = "herizo";
