@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.Console;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -43,19 +42,58 @@ public class App {
             String ligne;
             while ((ligne = br.readLine()) != null) {
                 bibliotheque.add(ligne);
-                System.out.println(ligne);
             }
         }catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
-    public static void main(String[] args) {
-        // String s1 = "herizo";
-        // String s2 = "hepezo";
-        // System.out.println(resolveLenveisten(s1, s2));
-        // insertToBibliotheaque("src/liste_francais.txt");
-        // System.out.println(readline());
+    static String readline(){
+        Scanner scanner = new Scanner(System.in);
+        String moString = scanner.nextLine();
+        scanner.close();
+        return moString;
     }
+
+    public static boolean isExist(){
+        return bibliotheque.contains(readline());
+    }
+    public static boolean isExist(String motString){
+        return bibliotheque.contains(motString);
+    }
+
+    public static ArrayList<String> liste(String mot){
+        ArrayList<String> x =new ArrayList<String>();
+        if (isExist(mot)) {
+            System.out.println("Le mot " + mot + "existe vraiment ! pas de faute");
+        }else{
+            for(int i= 0 ; i<bibliotheque.size(); i++){
+                if (resolveLenveisten(mot, bibliotheque.get(i))==1){
+                    x.add(bibliotheque.get(i));
+                    System.out.println(bibliotheque.get(i));
+                }
+            }
+        }
+        return x;
+    }
+
+    public static String[] prepareData(String mot){
+        return mot.split(" ");
+    }
+    
+    public static void resolvePhrase(String[] donnes){
+        for(String donne :donnes){
+            if (liste(donne).size() <1) {
+                
+            }else{
+                
+            }
+        }
+    }
+    public static void main(String[] args) {
+        // insertToBibliotheaque("src/liste_francais.txt");
+        // System.out.println(liste(readline()));
+        // resolvePhrase(prepareData(readline()));
+    }
+
 }
