@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.Console;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -58,6 +57,9 @@ public class App {
     }
 
 
+    public static boolean isExist(String motString){
+        return bibliotheque.contains(motString);
+    }
     public static void main(String[] args) {
         // String s1 = "herizo";
         // String s2 = "hepezo";
